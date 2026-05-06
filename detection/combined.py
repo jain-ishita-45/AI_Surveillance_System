@@ -15,10 +15,10 @@ voice_lock = threading.Lock()
 
 
 # 🔐 Replace with your credentials
-account_sid = "AC93678c72470708db0fa081be67da58cd"
-auth_token = "0a1885f0cf1dfef179c1ecaffe9a852f"
-twilio_number = "+18562765613"
-your_number = "+919179907679"
+account_sid = "###"
+auth_token = "##"
+twilio_number = "##"
+your_number = "###"
 
 def send_sms_alert():
     try:
