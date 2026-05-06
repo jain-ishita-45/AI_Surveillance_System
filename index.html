@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI Surveillance System</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#0a0f1c,#05070d);
+    color:white;
+    overflow:hidden;
+}
+
+/* BACKGROUND GLOW */
+body::before{
+    content:'';
+    position:absolute;
+    width:600px;
+    height:600px;
+    background:#00f2fe;
+    filter:blur(200px);
+    opacity:.15;
+    top:-100px;
+    left:-100px;
+}
+
+/* LAYOUT */
+.wrapper{
+    display:flex;
+    height:100vh;
+}
+
+/* SIDEBAR */
+.sidebar{
+    width:230px;
+    backdrop-filter: blur(15px);
+    background:rgba(255,255,255,0.05);
+    border-right:1px solid rgba(255,255,255,0.1);
+    padding:30px 20px;
+}
+
+.sidebar h2{
+    font-family:'Orbitron';
+    color:#00f2fe;
+    margin-bottom:30px;
+}
+
+.sidebar li{
+    list-style:none;
+    padding:12px;
+    margin:10px 0;
+    border-radius:10px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.sidebar li:hover{
+    background:rgba(0,242,254,0.2);
+}
+
+/* MAIN */
+.main{
+    flex:1;
+    padding:20px 30px;
+}
+
+/* HEADER */
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.header h1{
+    font-family:'Orbitron';
+    color:#00f2fe;
+}
+
+.status-box{
+    padding:10px 15px;
+    border-radius:20px;
+    background:rgba(0,255,100,0.2);
+    font-size:13px;
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:20px;
+}
+
+/* CAMERA */
+.camera{
+    height:400px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(15px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:18px;
+    color:#aaa;
+    border:1px solid rgba(255,255,255,0.1);
+    position:relative;
+}
+
+/* GLOW BORDER */
+.camera::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    border-radius:20px;
+    padding:1px;
+    background:linear-gradient(45deg,#00f2fe,#00ff9d);
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+}
+
+/* PANEL */
+.panel{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+/* CARD */
+.card{
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(15px);
+    padding:20px;
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,0.1);
+}
+
+.card h3{
+    margin-bottom:15px;
+    color:#00f2fe;
+}
+
+/* BUTTONS */
+button{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:14px;
+    transition:.3s;
+    font-weight:500;
+}
+
+.start{
+    background:linear-gradient(45deg,#00c853,#00ff9d);
+}
+
+.stop{
+    background:linear-gradient(45deg,#ff1744,#ff5252);
+}
+
+button:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 15px rgba(0,255,200,0.5);
+}
+
+/* FEATURES */
+.feature{
+    padding:10px;
+    margin:8px 0;
+    border-radius:10px;
+    background:rgba(255,255,255,0.05);
+    transition:.3s;
+}
+
+.feature:hover{
+    background:rgba(0,242,254,0.2);
+}
+
+/* LOGS */
+.logs{
+    max-height:140px;
+    overflow:auto;
+    font-size:13px;
+    color:#ccc;
+}
+
+/* SCROLLBAR */
+.logs::-webkit-scrollbar{
+    width:5px;
+}
+.logs::-webkit-scrollbar-thumb{
+    background:#00f2fe;
+    border-radius:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h2> AI SYSTEM</h2>
+        <ul>
+            <li> Dashboard</li>
+            <li> Live Feed</li>
+            <li> Alerts</li>
+            <li> Settings</li>
+        </ul>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <div class="header">
+            <h1> AI Surveillance</h1>
+            <div class="status-box" id="status">🟢 Idle</div>
+        </div>
+
+        <div class="grid">
+
+            <!-- CAMERA -->
+            <div class="camera">
+                 Live Feed Coming From Backend
+            </div>
+
+            <!-- PANEL -->
+            <div class="panel">
+
+                <div class="card">
+                    <h3> Controls</h3>
+                    <button class="start" onclick="startSystem()">▶ Start System</button>
+                    <button class="stop" onclick="stopSystem()">⏹ Stop System</button>
+                </div>
+
+                <div class="card">
+                    <h3> AI Features</h3>
+                    <div class="feature"> Face Detection</div>
+                    <div class="feature"> Fire Detection</div>
+                    <div class="feature"> Animal Detection</div>
+                    <div class="feature"> Smart Alerts</div>
+                </div>
+
+                <div class="card">
+                    <h3> Logs</h3>
+                    <div class="logs" id="logs">
+                        System initialized...<br>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+function log(msg){
+    document.getElementById("logs").innerHTML += msg + "<br>";
+}
+
+function startSystem(){
+    document.getElementById("status").innerText="🟡 Starting...";
+    fetch('/start')
+    .then(res=>res.json())
+    .then(data=>{
+        document.getElementById("status").innerText="🟢 " + data.status;
+        log("✅ System Started");
+    })
+    .catch(()=>{
+        document.getElementById("status").innerText="🔴 Error";
+        log("❌ Error starting system");
+    });
+}
+
+function stopSystem(){
+    document.getElementById("status").innerText="🟡 Stopping...";
+    fetch('/stop')
+    .then(res=>res.json())
+    .then(data=>{
+        document.getElementById("status").innerText="🔴 " + data.status;
+        log("⛔ System Stopped");
+    })
+    .catch(()=>{
+        document.getElementById("status").innerText="🔴 Error";
+        log("❌ Error stopping system");
+    });
+}
+
+</script>
+
+</body>
+</html>
