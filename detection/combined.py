@@ -15,11 +15,11 @@ voice_lock = threading.Lock()
 
 # ================= TWILIO CONFIG =================
 # Replace with your actual Twilio credentials
-account_sid = "AC93678c72470708db0fa081be67da58cd"
-auth_token = "eeed401a9dd3d870a54dc41d780883a2"
+account_sid = "##"
+auth_token = "##"
 
-twilio_number = "+18562765613"     # Your Twilio Number
-your_number = "+919179907679"     # Your Phone Number
+twilio_number = "+##"     # Your Twilio Number
+your_number = "+##"     # Your Phone Number
 
 
 # ================= TWILIO SMS FUNCTION =================
